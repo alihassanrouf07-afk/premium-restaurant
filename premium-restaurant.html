@@ -1,0 +1,2221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alihassan Restaurant - Fine Dining Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B8941F;
+            --deep-navy: #0A0E1A;
+            --charcoal: #1A1F2E;
+            --cream: #F8F5F0;
+            --light-gold: #EDD89F;
+            --accent-red: #8B0000;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: var(--deep-navy);
+            color: var(--cream);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+            position: relative;
+            animation: fadeInDown 1s ease;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 45px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .reserve-btn {
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            border: none;
+            padding: 12px 30px;
+            color: var(--deep-navy);
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .reserve-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10, 14, 26, 0.6), rgba(10, 14, 26, 0.8)),
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&h=1080&fit=crop') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: backgroundPulse 20s ease-in-out infinite;
+        }
+
+        @keyframes backgroundPulse {
+            0%, 100% {
+                background-size: 100% 100%;
+            }
+            50% {
+                background-size: 110% 110%;
+            }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(10, 14, 26, 0.8) 100%);
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                            radial-gradient(circle at 80% 50%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+                            radial-gradient(circle at center, transparent 0%, rgba(10, 14, 26, 0.8) 100%);
+            }
+            33% {
+                background: radial-gradient(circle at 80% 30%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                            radial-gradient(circle at 20% 70%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+                            radial-gradient(circle at center, transparent 0%, rgba(10, 14, 26, 0.8) 100%);
+            }
+            66% {
+                background: radial-gradient(circle at 50% 80%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                            radial-gradient(circle at 50% 20%, rgba(139, 0, 0, 0.1) 0%, transparent 50%),
+                            radial-gradient(circle at center, transparent 0%, rgba(10, 14, 26, 0.8) 100%);
+            }
+        }
+
+        /* Animated particles background */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(2px 2px at 20% 30%, rgba(212, 175, 55, 0.3), transparent),
+                radial-gradient(2px 2px at 60% 70%, rgba(212, 175, 55, 0.3), transparent),
+                radial-gradient(1px 1px at 50% 50%, rgba(212, 175, 55, 0.3), transparent),
+                radial-gradient(1px 1px at 80% 10%, rgba(212, 175, 55, 0.3), transparent),
+                radial-gradient(2px 2px at 90% 60%, rgba(212, 175, 55, 0.3), transparent),
+                radial-gradient(1px 1px at 33% 80%, rgba(212, 175, 55, 0.3), transparent),
+                radial-gradient(1px 1px at 15% 90%, rgba(212, 175, 55, 0.3), transparent);
+            background-size: 200% 200%;
+            animation: particlesFloat 25s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes particlesFloat {
+            0%, 100% {
+                background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%, 80% 120%, 120% 80%, 90% 110%, 110% 90%, 85% 115%, 105% 95%;
+            }
+        }
+
+        .hero-content {
+            z-index: 1;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: 300;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 90px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: var(--cream);
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .hero-description {
+            font-size: 22px;
+            margin-bottom: 40px;
+            color: var(--cream);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+            line-height: 1.8;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.9s both;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 18px 45px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: var(--deep-navy);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: var(--deep-navy);
+            transform: translateY(-3px);
+        }
+
+        /* Scroll Down Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator::before {
+            content: '';
+            display: block;
+            width: 2px;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, var(--gold));
+            margin: 0 auto 10px;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 120px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            height: 600px;
+            border: 3px solid var(--gold);
+            padding: 15px;
+            animation: fadeInLeft 1s ease;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%) contrast(110%);
+        }
+
+        .about-content {
+            animation: fadeInRight 1s ease;
+        }
+
+        .section-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            letter-spacing: 3px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--cream);
+            line-height: 1.2;
+        }
+
+        .about-text {
+            font-size: 19px;
+            line-height: 1.9;
+            margin-bottom: 25px;
+            color: rgba(248, 245, 240, 0.85);
+        }
+
+        .signature {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-style: italic;
+            color: var(--gold);
+            margin-top: 40px;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            background: var(--charcoal);
+            padding: 120px 50px;
+            position: relative;
+        }
+
+        .menu-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 300px;
+            background: linear-gradient(to bottom, var(--deep-navy), transparent);
+        }
+
+        .menu-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .menu-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+            margin-top: 60px;
+        }
+
+        .menu-item {
+            background: rgba(26, 31, 46, 0.6);
+            padding: 0;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-image {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .menu-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            filter: brightness(0.85);
+        }
+
+        .menu-item:hover .menu-image img {
+            transform: scale(1.1);
+            filter: brightness(1);
+        }
+
+        .menu-item-header,
+        .menu-item-desc {
+            padding: 0 30px;
+        }
+
+        .menu-item-header {
+            padding-top: 25px;
+        }
+
+        .menu-item-desc {
+            padding-bottom: 30px;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .menu-item:hover::before {
+            left: 100%;
+        }
+
+        .menu-item:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 15px;
+        }
+
+        .menu-item-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--cream);
+        }
+
+        .menu-item-price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 22px;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .menu-item-desc {
+            font-size: 16px;
+            color: rgba(248, 245, 240, 0.7);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 120px 50px;
+            background: var(--deep-navy);
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+            cursor: pointer;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            filter: grayscale(30%) brightness(0.8);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.15);
+            filter: grayscale(0%) brightness(1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(10, 14, 26, 0.8), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--gold);
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 120px 50px;
+            background: var(--charcoal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .testimonial-card {
+            background: rgba(10, 14, 26, 0.5);
+            padding: 45px;
+            border-left: 3px solid var(--gold);
+            position: relative;
+        }
+
+        .quote-icon {
+            font-size: 60px;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            font-size: 18px;
+            line-height: 1.9;
+            margin-bottom: 30px;
+            font-style: italic;
+            color: rgba(248, 245, 240, 0.9);
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+        }
+
+        .author-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            font-size: 14px;
+            color: rgba(248, 245, 240, 0.6);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 120px 50px;
+            background: var(--deep-navy);
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            margin-bottom: 30px;
+            color: var(--cream);
+        }
+
+        .info-item {
+            margin-bottom: 30px;
+        }
+
+        .info-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            font-size: 20px;
+            color: var(--cream);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 18px;
+            margin-bottom: 20px;
+            background: rgba(26, 31, 46, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--cream);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(26, 31, 46, 0.8);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            border: none;
+            color: var(--deep-navy);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            padding: 60px 50px 30px;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .social-link {
+            color: var(--cream);
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--gold);
+        }
+
+        .footer-text {
+            color: rgba(248, 245, 240, 0.6);
+            font-size: 14px;
+            margin-top: 30px;
+        }
+
+        /* Advanced Features - Premium Additions */
+        
+        /* Animated gradient text */
+        .gradient-text {
+            background: linear-gradient(90deg, var(--gold), var(--light-gold), var(--gold));
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: gradientMove 3s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* Floating action buttons */
+        .floating-actions {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+            animation: slideInRight 1s ease;
+        }
+
+        .float-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            border: none;
+            color: var(--deep-navy);
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .float-btn:hover {
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.6);
+        }
+
+        /* Live order tracking section */
+        .order-tracking {
+            background: var(--charcoal);
+            padding: 100px 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .order-tracking::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1), transparent);
+            top: -200px;
+            right: -200px;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        .tracking-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .tracking-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .tracking-step {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px;
+            background: rgba(10, 14, 26, 0.5);
+            border-left: 3px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .tracking-step:hover {
+            transform: translateX(10px);
+            background: rgba(10, 14, 26, 0.8);
+        }
+
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .step-content p {
+            color: rgba(248, 245, 240, 0.7);
+            font-size: 15px;
+        }
+
+        /* Special offers carousel */
+        .offers-section {
+            background: var(--deep-navy);
+            padding: 100px 50px;
+            position: relative;
+        }
+
+        .offers-carousel {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .offer-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(139, 0, 0, 0.1));
+            padding: 40px;
+            border: 2px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .offer-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .offer-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.3);
+        }
+
+        .offer-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-red);
+            color: white;
+            padding: 8px 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .offer-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            color: var(--gold);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .offer-desc {
+            font-size: 16px;
+            color: rgba(248, 245, 240, 0.8);
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .offer-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--cream);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .offer-price span {
+            text-decoration: line-through;
+            color: rgba(248, 245, 240, 0.4);
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        /* Stats counter section */
+        .stats-section {
+            background: var(--charcoal);
+            padding: 80px 50px;
+            position: relative;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px;
+            background: rgba(10, 14, 26, 0.5);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            background: rgba(10, 14, 26, 0.8);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: var(--cream);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Chef showcase section */
+        .chef-section {
+            padding: 100px 50px;
+            background: var(--deep-navy);
+        }
+
+        .chef-grid {
+            max-width: 1400px;
+            margin: 60px auto 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .chef-card {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            cursor: pointer;
+        }
+
+        .chef-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(40%);
+            transition: all 0.5s ease;
+        }
+
+        .chef-card:hover img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        .chef-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 25px;
+            background: linear-gradient(to top, rgba(10, 14, 26, 0.95), transparent);
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .chef-card:hover .chef-info {
+            transform: translateY(0);
+        }
+
+        .chef-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .chef-title {
+            font-size: 14px;
+            color: rgba(248, 245, 240, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Reservation modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--charcoal);
+            padding: 50px;
+            border: 2px solid var(--gold);
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 32px;
+            color: var(--gold);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg);
+            color: var(--accent-red);
+        }
+
+        /* Loyalty program section */
+        .loyalty-section {
+            background: linear-gradient(135deg, var(--charcoal), var(--deep-navy));
+            padding: 100px 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loyalty-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .loyalty-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .loyalty-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(139, 0, 0, 0.2));
+            padding: 50px 30px;
+            border: 2px solid var(--gold);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .loyalty-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.4);
+        }
+
+        .loyalty-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .loyalty-tier {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            color: var(--gold);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .loyalty-benefits {
+            list-style: none;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .loyalty-benefits li {
+            padding: 10px 0;
+            color: rgba(248, 245, 240, 0.8);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .loyalty-benefits li::before {
+            content: '✓';
+            color: var(--gold);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-15px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-8px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 70px;
+            }
+
+            .about-section,
+            .contact-container,
+            .tracking-container {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .offers-carousel,
+            .loyalty-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container,
+            .chef-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 50px;
+            }
+
+            .section-title {
+                font-size: 42px;
+            }
+
+            .menu-grid,
+            .testimonials-grid,
+            .stats-container,
+            .chef-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+            }
+
+            .floating-actions {
+                right: 15px;
+                bottom: 15px;
+            }
+
+            .float-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">Alihassan Restaurant</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="reserve-btn" onclick="scrollToReservation()">Reserve Table</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-subtitle">Est. 1995 • Karachi</div>
+            <h1 class="hero-title">Alihassan Restaurant</h1>
+            <p class="hero-description">
+                Experience the pinnacle of culinary artistry where every dish tells a story of passion, precision, and perfection
+            </p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="scrollToReservation()">Reserve Your Table</button>
+                <button class="btn-secondary" onclick="document.getElementById('menu').scrollIntoView()">View Menu</button>
+            </div>
+        </div>
+        <div class="scroll-indicator"></div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=800&h=1000&fit=crop" alt="Chef preparing food">
+        </div>
+        <div class="about-content">
+            <div class="section-label">Our Story</div>
+            <h2 class="section-title">A Legacy of Excellence</h2>
+            <p class="about-text">
+                For over two decades, Alihassan Restaurant has been the epitome of fine dining in Karachi. Our award-winning chefs craft each dish with meticulous attention to detail, using only the finest ingredients sourced from around the world.
+            </p>
+            <p class="about-text">
+                Every visit to Alihassan Restaurant is a journey through flavors, textures, and aromas that transcend ordinary dining. We don't just serve food; we create memories that last a lifetime.
+            </p>
+            <div class="signature">— Chef Philippe Laurent</div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="menu-container">
+            <div class="menu-header">
+                <div class="section-label">Culinary Excellence</div>
+                <h2 class="section-title">Signature Dishes</h2>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1595908129746-8a2e90e043d1?w=600&h=400&fit=crop" alt="Biryani">
+                    </div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Special Chicken Biryani</div>
+                        <div class="menu-item-price">Rs. 450</div>
+                    </div>
+                    <div class="menu-item-desc">
+                        Aromatic basmati rice with tender chicken, exotic spices and saffron
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&h=400&fit=crop" alt="Mutton Biryani">
+                    </div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Mutton Biryani</div>
+                        <div class="menu-item-price">Rs. 550</div>
+                    </div>
+                    <div class="menu-item-desc">
+                        Succulent mutton pieces cooked with fragrant spices and premium rice
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600&h=400&fit=crop" alt="Karahi">
+                    </div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Chicken Karahi</div>
+                        <div class="menu-item-price">Rs. 900</div>
+                    </div>
+                    <div class="menu-item-desc">
+                        Traditional wok-style chicken with tomatoes, ginger and green chilies
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=600&h=400&fit=crop" alt="Mutton Karahi">
+                    </div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Mutton Karahi</div>
+                        <div class="menu-item-price">Rs. 1200</div>
+                    </div>
+                    <div class="menu-item-desc">
+                        Tender mutton cooked in traditional karahi style with fresh herbs
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=600&h=400&fit=crop" alt="Kebab">
+                    </div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Seekh Kebab</div>
+                        <div class="menu-item-price">Rs. 350</div>
+                    </div>
+                    <div class="menu-item-desc">
+                        Juicy minced meat kebabs grilled to perfection with aromatic spices
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=600&h=400&fit=crop" alt="Tikka">
+                    </div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Chicken Tikka</div>
+                        <div class="menu-item-price">Rs. 400</div>
+                    </div>
+                    <div class="menu-item-desc">
+                        Marinated chicken pieces grilled with special tikka masala
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&h=400&fit=crop" alt="Nihari">
+                    </div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Special Nihari</div>
+                        <div class="menu-item-price">Rs. 500</div>
+                    </div>
+                    <div class="menu-item-desc">
+                        Slow-cooked beef stew with rich gravy and traditional spices
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=600&h=400&fit=crop" alt="Haleem">
+                    </div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Chicken Haleem</div>
+                        <div class="menu-item-price">Rs. 380</div>
+                    </div>
+                    <div class="menu-item-desc">
+                        Slow-cooked chicken with lentils and wheat, garnished with ginger
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?w=600&h=400&fit=crop" alt="Korma">
+                    </div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Chicken Korma</div>
+                        <div class="menu-item-price">Rs. 420</div>
+                    </div>
+                    <div class="menu-item-desc">
+                        Creamy chicken curry with yogurt, nuts and aromatic spices
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=400&fit=crop" alt="Pizza">
+                    </div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Chicken Fajita Pizza</div>
+                        <div class="menu-item-price">Rs. 850</div>
+                    </div>
+                    <div class="menu-item-desc">
+                        Large pizza with chicken fajita, bell peppers and mozzarella cheese
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=400&fit=crop" alt="Burger">
+                    </div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Beef Burger Deluxe</div>
+                        <div class="menu-item-price">Rs. 450</div>
+                    </div>
+                    <div class="menu-item-desc">
+                        Juicy beef patty with cheese, lettuce, tomato and special sauce
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1562059390-a761a084768e?w=600&h=400&fit=crop" alt="Pasta">
+                    </div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Chicken Alfredo Pasta</div>
+                        <div class="menu-item-price">Rs. 550</div>
+                    </div>
+                    <div class="menu-item-desc">
+                        Creamy alfredo sauce with grilled chicken and fettuccine pasta
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=600&h=400&fit=crop" alt="Pancakes">
+                    </div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Pancake Stack</div>
+                        <div class="menu-item-price">Rs. 380</div>
+                    </div>
+                    <div class="menu-item-desc">
+                        Fluffy pancakes with maple syrup, butter and fresh berries
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&h=400&fit=crop" alt="Sandwich">
+                    </div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Club Sandwich</div>
+                        <div class="menu-item-price">Rs. 420</div>
+                    </div>
+                    <div class="menu-item-desc">
+                        Triple-decker with chicken, bacon, lettuce, tomato and mayo
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1604467707321-70d5ac45adda?w=600&h=400&fit=crop" alt="Paratha">
+                    </div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Paratha Roll</div>
+                        <div class="menu-item-price">Rs. 250</div>
+                    </div>
+                    <div class="menu-item-desc">
+                        Flaky paratha wrapped with spicy chicken tikka and fresh salad
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=600&h=400&fit=crop" alt="Fish">
+                    </div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Grilled Fish</div>
+                        <div class="menu-item-price">Rs. 950</div>
+                    </div>
+                    <div class="menu-item-desc">
+                        Fresh fish marinated in herbs, grilled and served with lemon butter
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=600&h=400&fit=crop" alt="Salad">
+                    </div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Caesar Salad</div>
+                        <div class="menu-item-price">Rs. 350</div>
+                    </div>
+                    <div class="menu-item-desc">
+                        Fresh romaine lettuce with parmesan, croutons and caesar dressing
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-image">
+                        <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=600&h=400&fit=crop" alt="Naan">
+                    </div>
+                    <div class="menu-item-header">
+                        <div class="menu-item-name">Garlic Naan</div>
+                        <div class="menu-item-price">Rs. 80</div>
+                    </div>
+                    <div class="menu-item-desc">
+                        Soft tandoori naan topped with fresh garlic and butter
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="gallery-header">
+            <div class="section-label">Visual Journey</div>
+            <h2 class="section-title">Our Ambiance</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=600&fit=crop" alt="Restaurant interior">
+                <div class="gallery-overlay">
+                    <div class="gallery-title">Main Dining Hall</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&h=600&fit=crop" alt="Fine dining table">
+                <div class="gallery-overlay">
+                    <div class="gallery-title">Private Dining</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&h=600&fit=crop" alt="Gourmet dish">
+                <div class="gallery-overlay">
+                    <div class="gallery-title">Culinary Art</div>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?w=600&h=600&fit=crop" alt="Wine cellar">
+                <div class="gallery-overlay">
+                    <div class="gallery-title">Wine Cellar</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="testimonials-container">
+            <div class="testimonial-header">
+                <div class="section-label">Guest Reviews</div>
+                <h2 class="section-title">What They Say</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        An absolutely extraordinary experience. The attention to detail, the flavors, the ambiance – everything was perfect. This is not just dinner; it's an event to remember.
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/150?img=1" alt="Sarah" class="author-image">
+                        <div class="author-info">
+                            <h4>Sarah Mitchell</h4>
+                            <p>Food Critic, Gourmet Magazine</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        Élégance sets the gold standard for fine dining. Every dish is a masterpiece, and the service is impeccable. Worth every penny and more.
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/150?img=12" alt="James" class="author-image">
+                        <div class="author-info">
+                            <h4>James Richardson</h4>
+                            <p>CEO, Richardson Enterprises</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="quote-icon">"</div>
+                    <p class="testimonial-text">
+                        I've dined at Michelin-starred restaurants across Europe, and Élégance ranks among the very best. A true gem in Karachi's culinary scene.
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="Maria" class="author-image">
+                        <div class="author-info">
+                            <h4>Maria Rodriguez</h4>
+                            <p>Travel Blogger</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number" data-target="15000">0</div>
+                <div class="stat-label">Happy Customers</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="25">0</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="50">0</div>
+                <div class="stat-label">Menu Items</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" data-target="10">0</div>
+                <div class="stat-label">Expert Chefs</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers Section -->
+    <section class="offers-section">
+        <div class="menu-header">
+            <div class="section-label">Limited Time Deals</div>
+            <h2 class="section-title gradient-text">Special Offers</h2>
+        </div>
+        <div class="offers-carousel">
+            <div class="offer-card">
+                <div class="offer-badge">50% OFF</div>
+                <h3 class="offer-title">Family Feast</h3>
+                <p class="offer-desc">Complete meal for 6 people including Biryani, Karahi, Drinks & Dessert</p>
+                <div class="offer-price"><span>Rs. 5000</span> Rs. 2500</div>
+                <button class="btn-primary" onclick="openReservationModal()">Order Now</button>
+            </div>
+            <div class="offer-card">
+                <div class="offer-badge">HOT DEAL</div>
+                <h3 class="offer-title">Weekend Special</h3>
+                <p class="offer-desc">2 Pizzas + 2 Burgers + 1.5L Drink + Free Delivery</p>
+                <div class="offer-price"><span>Rs. 3000</span> Rs. 1999</div>
+                <button class="btn-primary" onclick="openReservationModal()">Order Now</button>
+            </div>
+            <div class="offer-card">
+                <div class="offer-badge">NEW</div>
+                <h3 class="offer-title">Lunch Combo</h3>
+                <p class="offer-desc">Choose any 2 main courses + 2 drinks + garlic naan</p>
+                <div class="offer-price"><span>Rs. 1800</span> Rs. 1299</div>
+                <button class="btn-primary" onclick="openReservationModal()">Order Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Tracking Section -->
+    <section class="order-tracking">
+        <div class="tracking-container">
+            <div>
+                <div class="section-label">Real-Time Updates</div>
+                <h2 class="section-title">Track Your Order</h2>
+                <p class="about-text">
+                    Experience complete transparency with our advanced order tracking system. From preparation to delivery, stay updated every step of the way.
+                </p>
+            </div>
+            <div class="tracking-steps">
+                <div class="tracking-step">
+                    <div class="step-icon">📝</div>
+                    <div class="step-content">
+                        <h4>Order Confirmed</h4>
+                        <p>Your order has been received and confirmed</p>
+                    </div>
+                </div>
+                <div class="tracking-step">
+                    <div class="step-icon">👨‍🍳</div>
+                    <div class="step-content">
+                        <h4>Being Prepared</h4>
+                        <p>Our chefs are preparing your delicious meal</p>
+                    </div>
+                </div>
+                <div class="tracking-step">
+                    <div class="step-icon">📦</div>
+                    <div class="step-content">
+                        <h4>Quality Check</h4>
+                        <p>Final quality inspection before dispatch</p>
+                    </div>
+                </div>
+                <div class="tracking-step">
+                    <div class="step-icon">🏍️</div>
+                    <div class="step-content">
+                        <h4>On The Way</h4>
+                        <p>Rider is heading to your location</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chef Showcase Section -->
+    <section class="chef-section">
+        <div class="menu-header">
+            <div class="section-label">Meet The Masters</div>
+            <h2 class="section-title">Our Expert Chefs</h2>
+        </div>
+        <div class="chef-grid">
+            <div class="chef-card">
+                <img src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?w=400&h=600&fit=crop" alt="Head Chef">
+                <div class="chef-info">
+                    <div class="chef-name">Chef Hassan Ali</div>
+                    <div class="chef-title">Head Chef</div>
+                </div>
+            </div>
+            <div class="chef-card">
+                <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&h=600&fit=crop" alt="Sous Chef">
+                <div class="chef-info">
+                    <div class="chef-name">Chef Fatima Khan</div>
+                    <div class="chef-title">Sous Chef</div>
+                </div>
+            </div>
+            <div class="chef-card">
+                <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=400&h=600&fit=crop" alt="Pastry Chef">
+                <div class="chef-info">
+                    <div class="chef-name">Chef Ahmed Raza</div>
+                    <div class="chef-title">BBQ Specialist</div>
+                </div>
+            </div>
+            <div class="chef-card">
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400&h=600&fit=crop" alt="Grill Master">
+                <div class="chef-info">
+                    <div class="chef-name">Chef Sara Malik</div>
+                    <div class="chef-title">Dessert Expert</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loyalty Program Section -->
+    <section class="loyalty-section">
+        <div class="loyalty-container">
+            <div class="section-label">Rewards Program</div>
+            <h2 class="section-title">Join Our VIP Club</h2>
+            <p class="about-text" style="max-width: 700px; margin: 20px auto;">
+                Become a member and enjoy exclusive benefits, discounts, and priority service
+            </p>
+            <div class="loyalty-cards">
+                <div class="loyalty-card">
+                    <div class="loyalty-icon">🥉</div>
+                    <h3 class="loyalty-tier">Bronze</h3>
+                    <ul class="loyalty-benefits">
+                        <li>5% discount on all orders</li>
+                        <li>Birthday special offer</li>
+                        <li>Free delivery over Rs. 1000</li>
+                        <li>Priority customer support</li>
+                    </ul>
+                </div>
+                <div class="loyalty-card">
+                    <div class="loyalty-icon">🥈</div>
+                    <h3 class="loyalty-tier">Silver</h3>
+                    <ul class="loyalty-benefits">
+                        <li>10% discount on all orders</li>
+                        <li>Free appetizer monthly</li>
+                        <li>Free delivery always</li>
+                        <li>Early access to new menu</li>
+                        <li>Reserved table booking</li>
+                    </ul>
+                </div>
+                <div class="loyalty-card">
+                    <div class="loyalty-icon">🥇</div>
+                    <h3 class="loyalty-tier">Gold</h3>
+                    <ul class="loyalty-benefits">
+                        <li>15% discount on all orders</li>
+                        <li>Complimentary dessert</li>
+                        <li>VIP private dining access</li>
+                        <li>Personal chef consultation</li>
+                        <li>Exclusive event invitations</li>
+                        <li>1 free meal per month</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Visit Us</h3>
+                <div class="info-item">
+                    <div class="info-label">Address</div>
+                    <div class="info-value">123 Luxury Avenue, Clifton<br>Karachi, Pakistan</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Phone</div>
+                    <div class="info-value">0328-5467942</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Hours</div>
+                    <div class="info-value">
+                        Tuesday - Sunday: 6:00 PM - 11:00 PM<br>
+                        Monday: Closed
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Email</div>
+                    <div class="info-value">reservations@alihassan.pk</div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form id="reservationForm">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                    <input type="tel" placeholder="Phone Number" required>
+                    <input type="date" placeholder="Reservation Date" required>
+                    <input type="time" placeholder="Time" required>
+                    <input type="number" placeholder="Number of Guests" min="1" max="12" required>
+                    <textarea placeholder="Special Requests"></textarea>
+                    <button type="submit" class="submit-btn">Make Reservation</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">Alihassan Restaurant</div>
+        <div class="footer-social">
+            <a href="#" class="social-link">📘</a>
+            <a href="#" class="social-link">📸</a>
+            <a href="#" class="social-link">🐦</a>
+        </div>
+        <p class="footer-text">© 2026 Alihassan Restaurant. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-actions">
+        <button class="float-btn" onclick="openReservationModal()" title="Quick Reserve">
+            🍽️
+        </button>
+        <button class="float-btn" onclick="window.location.href='tel:03285467942'" title="Call Now">
+            📞
+        </button>
+        <button class="float-btn" onclick="window.open('https://wa.me/923285467942', '_blank')" title="WhatsApp">
+            💬
+        </button>
+        <button class="float-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Back to Top">
+            ⬆️
+        </button>
+    </div>
+
+    <!-- Reservation Modal -->
+    <div id="reservationModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeReservationModal()">&times;</span>
+            <h2 class="section-title" style="font-size: 36px; margin-bottom: 30px;">Quick Reservation</h2>
+            <form id="quickReservationForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <input type="number" placeholder="Number of Guests" min="1" max="20" required>
+                <select required style="width: 100%; padding: 18px; margin-bottom: 20px; background: rgba(26, 31, 46, 0.6); border: 1px solid rgba(212, 175, 55, 0.3); color: var(--cream); font-family: 'Cormorant Garamond', serif; font-size: 16px;">
+                    <option value="">Select Time Slot</option>
+                    <option value="lunch">Lunch (12 PM - 3 PM)</option>
+                    <option value="evening">Evening (6 PM - 9 PM)</option>
+                    <option value="dinner">Dinner (9 PM - 12 AM)</option>
+                </select>
+                <button type="submit" class="submit-btn">Confirm Reservation</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll to reservation
+        function scrollToReservation() {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Modal functions
+        function openReservationModal() {
+            document.getElementById('reservationModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeReservationModal() {
+            document.getElementById('reservationModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('reservationModal');
+            if (event.target === modal) {
+                closeReservationModal();
+            }
+        }
+
+        // Quick reservation form
+        document.getElementById('quickReservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = this.querySelector('.submit-btn');
+            const originalText = btn.textContent;
+            btn.textContent = 'Processing...';
+            
+            setTimeout(() => {
+                btn.textContent = '✓ Reservation Confirmed!';
+                btn.style.background = '#22c55e';
+                
+                setTimeout(() => {
+                    closeReservationModal();
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                    this.reset();
+                }, 2000);
+            }, 1500);
+        });
+
+        // Animated stats counter
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target.toLocaleString() + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString();
+                }
+            }, 16);
+        }
+
+        // Trigger counter animation on scroll
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(num => {
+                        if (num.textContent === '0') {
+                            animateCounter(num);
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Form submission
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Animation effect
+            const btn = this.querySelector('.submit-btn');
+            const originalText = btn.textContent;
+            btn.textContent = 'Submitting...';
+            btn.style.background = 'var(--dark-gold)';
+            
+            setTimeout(() => {
+                btn.textContent = '✓ Reservation Received!';
+                btn.style.background = '#22c55e';
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                    this.reset();
+                }, 3000);
+            }, 1500);
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.menu-item, .gallery-item, .testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Menu item hover sound effect (optional - can be removed)
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transition = 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            });
+        });
+
+        // Gallery item click to enlarge
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                const modal = document.createElement('div');
+                modal.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.95);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 10000;
+                    cursor: pointer;
+                `;
+                
+                const enlargedImg = document.createElement('img');
+                enlargedImg.src = img.src;
+                enlargedImg.style.cssText = `
+                    max-width: 90%;
+                    max-height: 90%;
+                    object-fit: contain;
+                    border: 3px solid var(--gold);
+                `;
+                
+                modal.appendChild(enlargedImg);
+                document.body.appendChild(modal);
+                
+                modal.addEventListener('click', function() {
+                    modal.remove();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
